@@ -57,6 +57,7 @@ class ArticleController extends Controller
     }
 
     public function listeArticle(){
-
+        $articles = Article ::all();
+        return view('article.liste' , compact('articles'));
     }
 }

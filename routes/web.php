@@ -7,8 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/article', [ArticleController::class,'listeArticle']);
+Route::get('/article', [ArticleController::class,'listeArticle']);
 Route::get('/ajouter', [ArticleController::class,'ajouterArticle']);
-Route::get('/ajouter/traitement/', [ArticleController::class,'ajouterArticleTraitement']);
+Route::post('/ajouter/traitement/', [ArticleController::class,'ajouterArticleTraitement']);
 
 
