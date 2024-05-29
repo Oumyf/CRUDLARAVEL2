@@ -15,4 +15,4 @@ Route::get('/modifier-article/{id}', [ArticleController::class, 'modifierArticle
 
 Route::get('/modifier/traitement', [ArticleController::class, 'modifierArticleTraitement']);
 
-
+Route::get('/supprimer-article/{id}', [ArticleController::class, 'supprimerArticle']);
