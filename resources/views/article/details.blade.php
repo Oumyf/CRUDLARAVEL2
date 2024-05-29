@@ -22,28 +22,38 @@
     <hr>
 
     <div class="comments-section">
-      <h4>Commentaires</h4>
-      @foreach($article->commentaires as $commentaire)
-        <div class="card mb-2">
-          <div class="card-body">
-            <p class="card-text">{{ $commentaire->contenu }}</p>
-            <p class="card-text">{{ $commentaire->nom_complet_auteur }}</p>
-            <p class="card-text"><small class="text-muted">Posté le {{ $commentaire->date_heure_creation }}</small></p>
+        <h4>Commentaires</h4>
+        @foreach($article->commentaires as $commentaire)
+          <div class="card mb-2">
+            <div class="card-body">
+              <p class="card-text">{{ $commentaire->contenu }}</p>
+              <p class="card-text">{{ $commentaire->nom_complet_auteur }}</p>
+              <p class="card-text"><small class="text-muted">Posté le {{ $commentaire->date_heure_creation }}</small></p>
+              <a href="{{ route('commentaires.mettre_a_jour', $commentaire->id) }}" class="btn btn-info btn-sm">Modifier</a>
+              <form action="{{ route('commentaires.detruire', $commentaire->id) }}" method="POST" class="d-inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+              </form>
+            </div>
           </div>
-        </div>
-      @endforeach
-    </div>
+        @endforeach
+      </div>
+      
 
     <hr>
 
     <div class="add-comment-section">
       <h4>Ajouter un commentaire</h4>
-      <form action="{{ route('commentaires.store') }}" method="POST">
+      <form action="{{ route('commentaires.store') }}" method="GET">
         @csrf
         <input type="hidden" name="article_id" value="{{ $article->id }}">
         <div class="mb-3">
             <label for="nom_complet_auteur" class="form-label">Auteur</label>
             <input type="text" class="form-control" id="nom_complet_auteur" name="nom_complet_auteur" required>
+            <br>
+            <label for="date_heure_de_creation" class="form-label">Date et Heure de Création</label>
+            <input type="datetime-local" class="form-control" id="date_heure_de_creation" name="date_heure_creation" required>
             <br>
             <label for="contenu" class="form-label">Commentaire</label>
             <textarea class="form-control" id="contenu" name="contenu" rows="3" required></textarea>
