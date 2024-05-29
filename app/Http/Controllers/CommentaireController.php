@@ -11,9 +11,9 @@ class CommentaireController extends Controller
     {
         $request->validate([
             'article_id' => 'required|exists:articles,id',
-            'contenu' => 'required|text',
+            'contenu' => 'required|string',
             'nom_complet_auteur' => 'required|string',
-            'date_heure_creation' => 'required|datetimes',
+            'date_heure_creation' => 'required|date',
 
         ]);
 

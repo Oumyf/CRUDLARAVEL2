@@ -28,7 +28,7 @@
           <div class="card-body">
             <p class="card-text">{{ $commentaire->contenu }}</p>
             <p class="card-text">{{ $commentaire->nom_complet_auteur }}</p>
-            <p class="card-text"><small class="text-muted">Posté le {{ $commentaire->created_at }}</small></p>
+            <p class="card-text"><small class="text-muted">Posté le {{ $commentaire->date_heure_creation }}</small></p>
           </div>
         </div>
       @endforeach
@@ -43,13 +43,14 @@
         <input type="hidden" name="article_id" value="{{ $article->id }}">
         <div class="mb-3">
             <label for="nom_complet_auteur" class="form-label">Auteur</label>
-            <input type="text" class="form-control" id="nom_complet_auteur" name="nom_complet_auteur">
+            <input type="text" class="form-control" id="nom_complet_auteur" name="nom_complet_auteur" required>
             <br>
             <label for="contenu" class="form-label">Commentaire</label>
-          <textarea class="form-control" id="contenu" name="contenu" rows="3" required></textarea>
+            <textarea class="form-control" id="contenu" name="contenu" rows="3" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
-      </form>
+    </form>
+    
     </div>
   </div>
 
