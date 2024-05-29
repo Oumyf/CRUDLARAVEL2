@@ -31,9 +31,11 @@
                   <p class="card-text">{{ $article->description }}</p>
                   <p class="card-text"><small class="text-muted">{{ $article->date_de_creation }}</small></p>
                   <p class="card-text"><strong>A la une:</strong> {{ $article->is_a_la_une ? 'Oui' : 'Non' }}</p>
-                  <a href="/update-article/{{ $article->id }}" class="btn btn-info">Modifier</a>
+                  <a href="/modifier-article/{{ $article->id }}" class="btn btn-info">Modifier</a>
                   <a href="/delete-article/{{ $article->id }}" class="btn btn-danger">Supprimer</a>
-                  <a href="#" class="btn btn-primary">Ajouter un commentaire</a>
+                  <br>
+                  <br>
+                  <a href="#" class="btn btn-primary">Ajouter un commentaire <i class="fa-solid fa-comment"></i></a>
                 </div>
               </div>
             </div>

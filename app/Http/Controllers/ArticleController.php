@@ -60,4 +60,29 @@ class ArticleController extends Controller
         $articles = Article ::all();
         return view('article.liste' , compact('articles'));
     }
+
+    public function modifierArticle($id){
+        $article = Article::find($id);
+        return view('article.modifier', compact('article'));
+    }
+
+    public function modifierArticleTraitement(Request $request) {
+        $request->validate([
+            'nom' => 'required',
+            'description' => 'required',
+            'date_de_creation' => 'required',
+            'image' => 'required',
+        ]);
+        $article = Article::find($request->id);
+        $article ->nom = $request->nom;
+        $article ->description = $request->description;
+        $article ->date_de_creation = $request->date_de_creation;
+        $article ->image = $request->image;
+        $article ->is_a_la_une = $request->is_a_la_une;
+        $article ->update();
+        return redirect('/article')->with('status',"L'article a bien été modifié avec succès");
+
+    }
 }
+
+
