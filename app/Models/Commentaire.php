@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Commentaire extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['article_id', 'contenu'];
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
 }
+

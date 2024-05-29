@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('commentaires', function (Blueprint $table) {
             $table->id();
-            // $table->longText('contenu');
-            // $table->string('nom_complet_auteur');
-            // $table->datetimes('date_heure_creation');
-            // $table->foreignId('article_id')->constrained()->onDelete('cascade');
+            $table->longText('contenu');
+            $table->string('nom_complet_auteur');
+            $table->dateTime('date_heure_creation');
+            $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

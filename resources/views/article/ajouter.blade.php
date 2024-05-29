@@ -39,10 +39,10 @@
             <label for="Date_de_creation" class="form-label">Date de création</label>
             <input type="date" class="form-control" id="Date_de_creation" name="date_de_creation">
           </div>
-          <div class="mb-3">
-            <label for="image" class="form-label">Veuillez mettre l'URL de l'image</label>
-            <input class="form-control" type="text" id="image" name="image">
-          </div>
+       <div class="mb-3">
+    <label for="image" class="form-label">Image</label>
+    <input type="text" class="form-control" id="image" name="image"  required>
+  </div>
           <label for="is_a_la_une">L'article est-il à la une</label>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="is_a_la_une" id="oui" value="1">
