@@ -12,8 +12,8 @@ Route::get('/article', [ArticleController::class, 'listeArticle'])->name('articl
 Route::get('/article/{id}', [ArticleController::class, 'afficher_details'])->name('article.details');
 Route::get('/ajouter', [ArticleController::class, 'ajouterArticle'])->name('article.ajouter');
 Route::post('/ajouter/traitement', [ArticleController::class, 'ajouterArticleTraitement'])->name('article.ajouterTraitement');
-Route::get('/modifier-article/{id}', [ArticleController::class, 'modifierArticle'])->name('article.update');
-Route::post('/modifier/traitement/{id}', [ArticleController::class, 'modifierArticleTraitement'])->name('article.modifierTraitement');
+Route::get('/modifier-article/{id}', [ArticleController::class, 'modifierArticle'])->name('article.modifier');
+Route::get('/modifier/traitement', [ArticleController::class, 'modifierArticleTraitement']);
 Route::get('/supprimer-article/{id}', [ArticleController::class, 'supprimerArticle'])->name('article.supprimer');
 
 // Route pour créer un nouveau commentaire

@@ -54,29 +54,22 @@ class ArticleController extends Controller
         return view('article.modifier', compact('article'));
     }
 
-    public function modifierArticleTraitement(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'nom' => 'required|string|max:255',
-            'description' => 'required|string',
-            'date_de_creation' => 'required|date',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'is_a_la_une' => 'required|boolean',
+    public function modifierArticleTraitement(Request $request) {
+        $request->validate([
+            'nom' => 'required',
+            'description' => 'required',
+            'date_de_creation' => 'required',
+            'image' => 'required',
         ]);
+        $article = Article::find($request->id);
+        $article ->nom = $request->nom;
+        $article ->description = $request->description;
+        $article ->date_de_creation = $request->date_de_creation;
+        $article ->image = $request->image;
+        $article ->is_a_la_une = $request->is_a_la_une;
+        $article ->update();
+        return redirect('/article')->with('status',"L'article a bien été modifié avec succès");
 
-        $article = Article::findOrFail($id);
-
-        if ($request->hasFile('image')) {
-            // Stocker l'image et récupérer le chemin
-            $imagePath = $request->file('image')->store('images', 'public');
-            $validatedData['image'] = $imagePath;
-        } else {
-            $validatedData['image'] = $article->image;
-        }
-
-        $article->update($validatedData);
-
-        return redirect()->route('article.index')->with('status', "L'article a bien été modifié avec succès");
     }
 
     public function supprimerArticle($id)
